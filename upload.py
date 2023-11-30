@@ -40,7 +40,6 @@ last_checked_time = time.time()
 # Periodically check for new files (adjust the sleep duration as needed)
 while True:
     latest_image_path, last_checked_time = find_latest_jpg(directory_path, last_checked_time)
-    
     if latest_image_path:
         print(f"Latest image file: {latest_image_path}")
         f = drive.CreateFile({
@@ -52,6 +51,5 @@ while True:
         f.Upload()
         print("File uploaded to Google Drive.")
         os.system('python3 AWS_connect.py')
-
     # Adjust the sleep duration based on your desired frequency of checking for new files
     time.sleep(10)  # Sleep for 60 seconds before checking again
